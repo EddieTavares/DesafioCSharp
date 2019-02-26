@@ -20,21 +20,6 @@ namespace QuadroAtividade.Controllers
             return View(db.Task.ToList());
         }
 
-        // GET: Tasks/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Task task = db.Task.Find(id);
-            if (task == null)
-            {
-                return HttpNotFound();
-            }
-            return View(task);
-        }
-
         // GET: Tasks/Create
         public ActionResult Create()
         {
@@ -147,17 +132,6 @@ namespace QuadroAtividade.Controllers
                 return Json(new { rc = 9, message = e.Message });
             }
         }
-
-        // // POST: Tasks/Delete/5
-        // [HttpPost, ActionName("Delete")]
-        // [ValidateAntiForgeryToken]
-        // public ActionResult DeleteConfirmed(int id)
-        // {
-        //     Task task = db.Task.Find(id);
-        //     db.Task.Remove(task);
-        //     db.SaveChanges();
-        //     return RedirectToAction("Index");
-        // }
 
         protected override void Dispose(bool disposing)
         {
