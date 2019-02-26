@@ -1,0 +1,73 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#board {
+    display: table;
+    margin: 0;
+    padding: 0;
+    border-spacing: 5px;
+}
+
+.section {
+    display: table-cell;
+    margin: 0;
+    border: 1px solid #666;
+    padding: 5px;
+    width: 300px;
+}
+
+.section.droppable {
+    border: 1px dashed #666;
+}
+
+.section > h1 {
+    margin: 0;
+    border-bottom: 1px solid #999;
+    padding: 0;
+    font-size: 12pt;
+    text-align: center;
+}
+
+.card {
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px 5px;
+    padding: 10px;
+    width: 70%;
+    height: 100%;
+    color: black;
+    background: #ff8;
+    cursor: move;
+    text-align: center;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    box-shadow: 2px 2px 2px #eee;
+}
+
+.pagination-no-border-radius > li > a,
+.pagination-no-border-radius > li > span {
+    border: 0px;
+    border-radius: 0 !important;
+}
+
