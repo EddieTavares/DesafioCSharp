@@ -112,7 +112,8 @@ namespace QuadroAtividade.Controllers
             }
         }
 
-        // GET: Tasks/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int? id)
         {
             try

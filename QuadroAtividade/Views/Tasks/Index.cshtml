@@ -33,26 +33,30 @@
             {
 
                 <div id="@item.TaskId" class="card">
+                    <div>
+                        <h3> <u> @item.Titulo </u></h3>
+                        <p>@item.Descricao</p>
 
-                    <h3> <u> @item.Titulo </u></h3>
-                    <p>@item.Descricao</p>
-
-                    <h4>Id: @item.TaskId</h4>
-                    <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
+                        <h4>Id: @item.TaskId</h4>
+                        <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
 
 
-                    @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
-                    {
-                        <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
-                    }
+                        @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
+                        {
+                            <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
+                        }
+                    </div>
 
-                    <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
 
-                    @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-bottom : 2%; margin-top : 2%" })
-                    }
+                    <div style="display: inline-flex;">
+                        <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-right: 2px; margin-left: 2px;"></button>
+                        @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                        }
+                    </div>
+
 
                 </div>
             }
@@ -68,26 +72,30 @@
             if (item.Status == 2)
             {
                 <div id="@item.TaskId" class="card">
+                    <div>
+                        <h3> <u> @item.Titulo </u></h3>
+                        <p>@item.Descricao</p>
 
-                    <h3> <u> @item.Titulo </u></h3>
-                    <p>@item.Descricao</p>
-
-                    <h4>Id: @item.TaskId</h4>
-                    <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
+                        <h4>Id: @item.TaskId</h4>
+                        <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
 
 
-                    @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
-                    {
-                        <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
-                    }
+                        @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
+                        {
+                            <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
+                        }
+                    </div>
 
-                    <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
 
-                    @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-bottom : 2%; margin-top : 2%" })
-                    }
+                    <div style="display: inline-flex;">
+                        <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-right: 2px; margin-left: 2px;"></button>
+                        @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                        }
+                    </div>
+
 
                 </div>
             }
@@ -102,26 +110,30 @@
             if (item.Status == 3)
             {
                 <div id="@item.TaskId" class="card">
+                    <div>
+                        <h3> <u> @item.Titulo </u></h3>
+                        <p>@item.Descricao</p>
 
-                    <h3> <u> @item.Titulo </u></h3>
-                    <p>@item.Descricao</p>
-
-                    <h4>Id: @item.TaskId</h4>
-                    <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
+                        <h4>Id: @item.TaskId</h4>
+                        <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
 
 
-                    @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
-                    {
-                        <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
-                    }
+                        @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
+                        {
+                            <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
+                        }
+                    </div>
 
-                    <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
 
-                    @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-bottom : 2%; margin-top : 2%" })
-                    }
+                    <div style="display: inline-flex;">
+                            <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-right: 2px; margin-left: 2px;"></button>
+                            @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                            }
+                    </div>
+
 
                 </div>
             }
