@@ -11,15 +11,18 @@
                 string pOk, 
                 string pCancel)
         {
+
+            var guid = Guid.NewGuid();
             var builder = new TagBuilder("button");
+
             builder.InnerHtml = pBtnCaption;
             builder.Attributes["type"] = "button";
-            builder.Attributes["data-target"] ="#modalConfirma";
+            builder.Attributes["data-target"] =$"#modalConfirma-{guid}";
             builder.Attributes["data-toggle"] = "modal";
             builder.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(pHtmlAttributes));
 
             var modalConfirma = builder.ToString() + Environment.NewLine +
-                $" <div class='modal' id='modalConfirma'>                                                                    " + Environment.NewLine +
+                $" <div class='modal' id='modalConfirma-{guid}'>                                                             " + Environment.NewLine +
                 $"     <div class='modal-dialog'>                                                                            " + Environment.NewLine +
                 $"         <div class='modal-content'>                                                                       " + Environment.NewLine +
                 $"             <div class='modal-header'>                                                                    " + Environment.NewLine +

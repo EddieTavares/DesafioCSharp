@@ -31,50 +31,30 @@
         {
             if (item.Status == 1)
             {
-        <div id="@item.TaskId" class="card">
 
-            Id: @item.TaskId <br />
-            Criação: @item.DataCriacao.ToString("dd/MM/yyyy") <br />
+                <div id="@item.TaskId" class="card">
 
-            @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
-            {
-                <div>
-                    Atualização: @item.DataEdicao.ToString("dd/MM/yyyy") <br /><br />
+                    <h3> <u> @item.Titulo </u></h3>
+                    <p>@item.Descricao</p>
+
+                    <h4>Id: @item.TaskId</h4>
+                    <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
+
+
+                    @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
+                    {
+                        <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
+                    }
+
+                    <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
+
+                    @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-bottom : 2%; margin-top : 2%" })
+                    }
+
                 </div>
-            }
-
-            <b> <u> @item.Titulo </u></b> <br /><br />
-
-            @item.Descricao <br />
-
-            <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
-
-            <button class="btn btn-danger glyphicon glyphicon-trash" title="Excluir" data-target="#modalConfirma-@item.TaskId" data-toggle="modal" type="button"></button>
-            <div class="modal" id="modalConfirma-@item.TaskId">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">
-                                Confirmar ação
-                            </h4>
-                            <button type="button" class="close" data-dismiss="modal">×</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            Deseja excluir a tarefa ?
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <input value="Excluir" class="btn btn-default" onclick="location.href = ' @Url.Action("Delete", "Tasks", new { id = item.TaskId })'; return false">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancela</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
             }
         }
 
@@ -87,50 +67,29 @@
         {
             if (item.Status == 2)
             {
-        <div id="@item.TaskId" class="card">
+                <div id="@item.TaskId" class="card">
 
-            Id: @item.TaskId <br />
-            Criação: @item.DataCriacao.ToString("dd/MM/yyyy") <br />
-            @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
-            {
-                <div>
-                    Atualização: @item.DataEdicao.ToString("dd/MM/yyyy") <br /><br />
+                    <h3> <u> @item.Titulo </u></h3>
+                    <p>@item.Descricao</p>
+
+                    <h4>Id: @item.TaskId</h4>
+                    <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
+
+
+                    @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
+                    {
+                        <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
+                    }
+
+                    <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
+
+                    @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-bottom : 2%; margin-top : 2%" })
+                    }
+
                 </div>
-            }
-
-
-            <b> <u> @item.Titulo </u></b> <br /><br />
-
-            @item.Descricao  <br />
-
-            <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
-
-            <button class="btn btn-danger glyphicon glyphicon-trash" title="Excluir" data-target="#modalConfirma-@item.TaskId" data-toggle="modal" type="button"></button>
-            <div class="modal" id="modalConfirma-@item.TaskId">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">
-                                Confirmar ação
-                            </h4>
-                            <button type="button" class="close" data-dismiss="modal">×</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            Deseja excluir a tarefa ?
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <input value="Excluir" class="btn btn-default" onclick="location.href = ' @Url.Action("Delete", "Tasks", new { id = item.TaskId })'; return false">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancela</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
             }
         }
 
@@ -142,50 +101,29 @@
         {
             if (item.Status == 3)
             {
-        <div id="@item.TaskId" class="card">
+                <div id="@item.TaskId" class="card">
 
-            Id: @item.TaskId <br />
-            Criação: @item.DataCriacao.ToString("dd/MM/yyyy") <br />
-            
-            @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
-            {
-                <div>
-                    Atualização: @item.DataEdicao.ToString("dd/MM/yyyy") <br /><br />
+                    <h3> <u> @item.Titulo </u></h3>
+                    <p>@item.Descricao</p>
+
+                    <h4>Id: @item.TaskId</h4>
+                    <h4>Criação: @item.DataCriacao.ToString("dd/MM/yyyy")</h4>
+
+
+                    @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
+                    {
+                        <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
+                    }
+
+                    <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
+
+                    @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-bottom : 2%; margin-top : 2%" })
+                    }
+
                 </div>
-            }
-
-            <b> <u> @item.Titulo </u></b> <br /><br />
-
-            @item.Descricao  <br />
-
-            <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-bottom : 2%; margin-top : 2%"></button>
-
-            <button class="btn btn-danger glyphicon glyphicon-trash" title="Excluir" data-target="#modalConfirma-@item.TaskId" data-toggle="modal" type="button"></button>
-            <div class="modal" id="modalConfirma-@item.TaskId">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">
-                                Confirmar ação
-                            </h4>
-                            <button type="button" class="close" data-dismiss="modal">×</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            Deseja excluir a tarefa ?
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <input value="Excluir" class="btn btn-default" onclick="location.href = ' @Url.Action("Delete", "Tasks", new { id = item.TaskId })'; return false">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancela</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
             }
         }
 
