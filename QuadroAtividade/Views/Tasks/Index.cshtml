@@ -20,7 +20,7 @@
 <h2>Quadro de atividades</h2>
 
 <p>
-    <button class="btn btn-info create" title="Cadastrar" type="button"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
+    <button class="btn btn-info create" title="Cadastrar" type="button" style="margin-left: 5px;"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
 </p>
 
 <div id="board">
@@ -48,12 +48,12 @@
                     </div>
 
                     <div style="display: inline-flex;">
-                        <button class="btn btn-warning details" title="Detalhes" data-id="@item.TaskId" type="button" style="margin-right: 2px; margin-left: 2px;"><i class="glyphicon glyphicon-file"></i></button>
-                        <button class="btn btn-primary edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
+                        <button class="btn btn-warning btn-mini details" title="Detalhes" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-file"></i></button>
+                        <button class="btn btn-primary btn-mini edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
                         @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;", @title = "Excluir atividade" })
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger btn-mini glyphicon glyphicon-trash", @style = "top: 0px;", @title = "Excluir atividade" })
                         }
                     </div>
                 </div>
@@ -84,12 +84,12 @@
                         }
                     </div>
                     <div style="display: inline-flex;">
-                        <button class="btn btn-warning details" title="Detalhes" data-id="@item.TaskId" type="button" style="margin-right: 2px; margin-left: 2px;"><i class="glyphicon glyphicon-file"></i></button>
-                        <button class="btn btn-primary edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
+                        <button class="btn btn-warning btn-mini details" title="Detalhes" data-id="@item.TaskId" type="button" style="margin-right: 2px; margin-left: 2px;"><i class="glyphicon glyphicon-file"></i></button>
+                        <button class="btn btn-primary btn-mini edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
                         @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;", @title = "Excluir atividade" })
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger btn-mini glyphicon glyphicon-trash", @style = "top: 0px;", @title = "Excluir atividade" })
                         }
                     </div>
                 </div>
@@ -119,12 +119,12 @@
                         }
                     </div>
                     <div style="display: inline-flex;">
-                        <button class="btn btn-warning details" title="Detalhes" data-id="@item.TaskId" type="button" style="margin-right: 2px; margin-left: 2px;"><i class="glyphicon glyphicon-file"></i></button>
-                        <button class="btn btn-primary edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
+                        <button class="btn btn-warning btn-mini details" title="Detalhes" data-id="@item.TaskId" type="button" style="margin-right: 2px; margin-left: 2px;"><i class="glyphicon glyphicon-file"></i></button>
+                        <button class="btn btn-primary btn-mini edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
                         @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;", @title = "Excluir atividade" })
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger btn-mini glyphicon glyphicon-trash", @style = "top: 0px;", @title = "Excluir atividade" })
                         }
                     </div>
                 </div>
@@ -143,9 +143,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataCriacao)
@@ -171,20 +168,33 @@
                     @Html.DisplayFor(modelItem => item.Titulo)
                 </td>
                 <td>
-                    @item.Descricao.ToString().Substring(0, (item.Descricao.Length > 20) ? 20 : item.Descricao.Length)
+                    @item.Descricao.ToString().Substring(0, (item.Descricao.Length > 30) ? 30 : item.Descricao.Length)
                     ...
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
                     @item.DataCriacao.ToString("dd/MM/yyyy")
                 </td>
                 <td>
-                    @item.DataEdicao.ToString("dd/MM/yyyy")
+                    @if (item.DataEdicao.ToString("dd/MM/yyyy") != "31/12/9999")
+                    {
+                        @item.DataEdicao.ToString("dd/MM/yyyy")
+                    }
+                    else
+
+                    {
+                        <p> </p>
+                    }
                 </td>
                 <td>
-                    @item.DataConclusao.ToString("dd/MM/yyyy")
+                    @if (item.DataConclusao.ToString("dd/MM/yyyy") != "31/12/9999")
+                    {
+                        @item.DataConclusao.ToString("dd/MM/yyyy")
+                    }
+                    else
+
+                    {
+                        <p> </p>
+                    }
                 </td>
                 <td>
                     @item.DataRemocao.ToString("dd/MM/yyyy")
@@ -206,200 +216,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-
-        var cards = document.querySelectorAll('.card');
-
-        for (var i = 0, n = cards.length; i < n; i++) {
-            var card = cards[i];
-            card.draggable = true;
-        };
-
-        var board = document.getElementById('board');
-
-        var hideMe;
-
-        board.onselectstart = function (e) {
-            e.preventDefault();
-        }
-
-        board.ondragstart = function (e) {
-            console.log('dragstart');
-            hideMe = e.target;
-            e.dataTransfer.setData('card', e.target.id);
-            e.dataTransfer.effectAllowed = 'move';
-        };
-
-        board.ondragend = function (e) {
-            e.target.style.visibility = 'visible';
-        };
-
-        var lastEneterd;
-
-        board.ondragenter = function (e) {
-            console.log('dragenter');
-            if (hideMe) {
-                hideMe.style.visibility = 'hidden';
-                hideMe = null;
-            }
-            // Save this to check in dragleave.
-            lastEntered = e.target;
-            var section = closestWithClass(e.target, 'section');
-            // TODO: Check that it's not the original section.
-            if (section) {
-                section.classList.add('droppable');
-                e.preventDefault(); // Not sure if these needs to be here. Maybe for IE?
-                return false;
-            }
-        };
-
-        board.ondragover = function (e) {
-            // TODO: Check data type.
-            // TODO: Check that it's not the original section.
-            if (closestWithClass(e.target, 'section')) {
-                e.preventDefault();
-            }
-        };
-
-        board.ondragleave = function (e) {
-            // FF is raising this event on text nodes so only check elements.
-            if (e.target.nodeType === 1) {
-                // dragleave for outer elements can trigger after dragenter for inner elements
-                // so make sure we're really leaving by checking what we just entered.
-                // relatedTarget is missing in WebKit: https://bugs.webkit.org/show_bug.cgi?id=66547
-                var section = closestWithClass(e.target, 'section');
-                if (section && !section.contains(lastEntered)) {
-                    section.classList.remove('droppable');
-                }
-            }
-            lastEntered = null; // No need to keep this around.
-        };
-
-        board.ondrop = function (e) {
-            var section = closestWithClass(e.target, 'section');
-            var id = e.dataTransfer.getData('card');
-
-            if (id) {
-                var card = document.getElementById(id);
-                // Might be a card from another window.
-                if (card) {
-                    if (section !== card.parentNode) {
-                        section.appendChild(card);
-                        AtualizaStatus(id, section.id);
-                    }
-                } else {
-                    alert('couldn\'t find card #' + id);
-                }
-            }
-
-            section.classList.remove('droppable');
-            e.preventDefault();
-        };
-
-        function closestWithClass(target, className) {
-            while (target) {
-                if (target.nodeType === 1 &&
-                    target.classList.contains(className)) {
-                    return target;
-                }
-                target = target.parentNode;
-            }
-            return null;
-        }
-
-        function AtualizaStatus(TaskId, SessionId) {
-
-            debugger;
-
-            var token = $('input[name="__RequestVerificationToken"]').val();
-            var tokenadr = $('form[action="' + baseUrl + 'Tasks/AtualizaStatus"] input[name="__RequestVerificationToken"]').val();
-            var headersadr = {};
-            headersadr['__RequestVerificationToken'] = tokenadr;
-            var url = baseUrl + "Tasks/AtualizaStatus";
-
-            var Status = 0;
-
-            if (SessionId === '001') {
-                Status = 1;
-            } else if (SessionId === '002') {
-                Status = 2;
-            } else if (SessionId === '003') {
-                Status = 3;
-            }
-
-            $.ajax({
-                url: url
-                , type: "POST"
-                , datatype: "json"
-                , headers: headersadr
-                , data:
-                {
-                    TaskId: TaskId,
-                    Status: Status,
-                    __RequestVerificationToken: token
-                }
-                , success: function (data) {
-                    // CarregaPartialFotos();
-                },
-                error: function (erro) {
-                    console.debug(erro);
-                }
-            });
-        }
-
-
-        // Excluir imagem
-        function ExcluiTask(TaskId) {
-
-            var token = $('input[name="__RequestVerificationToken"]').val();
-            var tokenadr = $('form[action="' + baseUrl + 'Tasks/ExcluiTask"] input[name="__RequestVerificationToken"]').val();
-            var headersadr = {};
-            headersadr['__RequestVerificationToken'] = tokenadr;
-            var url = baseUrl + "Tasks/ExcluiTask";
-
-            $.ajax({
-                url: url
-                , type: "POST"
-                , datatype: "json"
-                , headers: headersadr
-                , data:
-                {
-                    TaskId: TaskId,
-                    __RequestVerificationToken: token
-                }
-                , success: function (data) {
-                    CarregaPartialFotos();
-                },
-                error: function (erro) {
-                    console.debug(erro);
-                }
-            });
-        }
-
-        $(function () {
-            $(".details").click(function () {
-                var id = $(this).attr("data-id");
-                $("#modal").load("/Tasks/Details?id=" + id, function () {
-                    $("#modal").modal();
-                })
-            });
-
-            $(".create").click(function () {
-                $("#modal").load("/Tasks/Create", function () {
-                    $.validator.unobtrusive.parse("#modal");
-                    $("#modal").modal();
-                })
-            });
-
-            $(".edit").click(function () {
-                var id = $(this).attr("data-id");
-                $("#modal").load("/Tasks/Edit?id=" + id, function () {
-                    $.validator.unobtrusive.parse("#modal");
-                    $("#modal").modal();
-                })
-            });
-        })
-
-
-    </script>
+    <script src="~/Scripts/Task.js"></script>
 }

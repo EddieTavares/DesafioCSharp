@@ -71,3 +71,9 @@ textarea {
     border-radius: 0 !important;
 }
 
+.btn-mini {
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+
