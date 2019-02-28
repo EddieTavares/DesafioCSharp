@@ -149,6 +149,32 @@ namespace QuadroAtividade.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RestauraTask(int? id)
+        {
+            try
+            {
+                var _task = db.Task.Find(id);
+
+                if (_task.DataConclusao < DateTime.MaxValue)
+                    _task.Status = 3;
+                else if (_task.DataEdicao < DateTime.MaxValue)
+                    _task.Status = 2;
+                else
+                    _task.Status = 1;
+
+                db.Entry(_task).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return Json(new { rc = 9, message = e.Message });
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

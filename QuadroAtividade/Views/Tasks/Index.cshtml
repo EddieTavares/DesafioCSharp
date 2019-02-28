@@ -53,7 +53,7 @@
                         @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;", @title = "Excluir atividade" })
                         }
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                         @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;", @title = "Excluir atividade" })
                         }
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                         @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;", @title = "Excluir atividade" })
                         }
                     </div>
                 </div>
@@ -132,6 +132,74 @@
         }
     </div>
 </div>
+
+
+<h2>Atividades excluídas</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEdicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataConclusao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataRemocao)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Status == 4)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @item.Descricao.ToString().Substring(0, (item.Descricao.Length > 20) ? 20 : item.Descricao.Length)
+                    ...
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @item.DataCriacao.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.DataEdicao.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.DataConclusao.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.DataRemocao.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @using (Html.BeginForm("RestauraTask", "Tasks", new { id = item.TaskId }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja restaurar a atividade ?", new { @class = "btn btn-success glyphicon glyphicon-arrow-up", @style = "margin-right: 2px; margin-left: 2px;", @title = "Restaurar atividade" })
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
 
 <div class="modal" id="modal">
 </div>
@@ -330,17 +398,6 @@
                     $("#modal").modal();
                 })
             });
-
-            $.validator.unobtrusive.addValidation = function (selector) {
-
-                debugger;
-
-                //get the relevant form 
-                var form = $(selector);
-                // delete validator in case someone called form.validate()
-                $(form).removeData("validator");
-                $.validator.unobtrusive.parse(form); 
-            }
         })
 
 
