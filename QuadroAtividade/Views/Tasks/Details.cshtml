@@ -1,0 +1,27 @@
+﻿@model QuadroAtividade.Models.Task
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Detalhes do produto</h4>
+        </div>
+        <div class="modal-body">
+            <p>@Html.DisplayNameFor(model => model.Titulo) : @Html.DisplayFor(model => model.Titulo)</p>
+            <p>@Html.DisplayNameFor(model => model.Descricao) : @Html.DisplayFor(model => model.Descricao)</p>
+            <p>@Html.DisplayNameFor(model => model.DataCriacao) : @Html.DisplayFor(model => model.DataCriacao)</p>
+            <p>@Html.DisplayNameFor(model => model.DataEdicao) : @Html.DisplayFor(model => model.DataEdicao)</p>
+            <p>@Html.DisplayNameFor(model => model.DataConclusao) : @Html.DisplayFor(model => model.DataConclusao)</p>
+            <p>@Html.DisplayNameFor(model => model.DataRemocao) : @Html.DisplayFor(model => model.DataRemocao)</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+

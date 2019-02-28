@@ -26,6 +26,20 @@ namespace QuadroAtividade.Controllers
             return View();
         }
 
+        // GET: Anuncios/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var task = db.Task.Find(id);
+            if (task == null)
+                return HttpNotFound();
+
+            return View(task);
+        }
+
+
         // POST: Tasks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -47,7 +61,7 @@ namespace QuadroAtividade.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(task);
+            return PartialView("Create", task);
         }
 
         // GET: Tasks/Edit/5
@@ -85,7 +99,8 @@ namespace QuadroAtividade.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(task);
+
+            return PartialView("Edit", task);
         }
 
         [HttpPost]

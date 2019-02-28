@@ -20,7 +20,7 @@
 <h2>Quadro de atividades</h2>
 
 <p>
-    @Html.ActionLink(" Cadastrar", "Create", null, new { @class = "btn btn-info glyphicon glyphicon-plus" })
+    <button class="btn btn-info create" title="Cadastrar" type="button"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
 </p>
 
 <div id="board">
@@ -47,17 +47,15 @@
                         }
                     </div>
 
-
                     <div style="display: inline-flex;">
-                        <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-right: 2px; margin-left: 2px;"></button>
+                        <button class="btn btn-warning details" title="Detalhes" data-id="@item.TaskId" type="button" style="margin-right: 2px; margin-left: 2px;"><i class="glyphicon glyphicon-file"></i></button>
+                        <button class="btn btn-primary edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
                         @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
                         }
                     </div>
-
-
                 </div>
             }
         }
@@ -85,18 +83,15 @@
                             <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
                         }
                     </div>
-
-
                     <div style="display: inline-flex;">
-                        <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-right: 2px; margin-left: 2px;"></button>
+                        <button class="btn btn-warning details" title="Detalhes" data-id="@item.TaskId" type="button" style="margin-right: 2px; margin-left: 2px;"><i class="glyphicon glyphicon-file"></i></button>
+                        <button class="btn btn-primary edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
                         @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
                         }
                     </div>
-
-
                 </div>
             }
         }
@@ -123,27 +118,26 @@
                             <h4> Atualização: @item.DataEdicao.ToString("dd/MM/yyyy")</h4>
                         }
                     </div>
-
-
                     <div style="display: inline-flex;">
-                            <button class="btn btn-warning glyphicon glyphicon-edit" title="Editar" type="button" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = item.TaskId })';return false;" style="margin-right: 2px; margin-left: 2px;"></button>
-                            @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja solicitar a Prorrogação do titulo  ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
-                            }
+                        <button class="btn btn-warning details" title="Detalhes" data-id="@item.TaskId" type="button" style="margin-right: 2px; margin-left: 2px;"><i class="glyphicon glyphicon-file"></i></button>
+                        <button class="btn btn-primary edit" title="Editar" data-id="@item.TaskId" type="button"><i class="glyphicon glyphicon-edit"></i></button>
+                        @using (Html.BeginForm("Delete", "Tasks", new { id = item.TaskId }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.CustomBtnConfirmation("", "Confirmar ação", "Deseja excluir a atividade ?", new { @class = "btn btn-danger glyphicon glyphicon-trash", @style = "margin-right: 2px; margin-left: 2px;" })
+                        }
                     </div>
-
-
                 </div>
             }
         }
-
     </div>
 </div>
 
+<div class="modal" id="modal">
+</div>
 
 @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
 
         var cards = document.querySelectorAll('.card');
@@ -313,6 +307,41 @@
                 }
             });
         }
+
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("/Tasks/Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+            $(".create").click(function () {
+                $("#modal").load("/Tasks/Create", function () {
+                    $.validator.unobtrusive.parse("#modal");
+                    $("#modal").modal();
+                })
+            });
+
+            $(".edit").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("/Tasks/Edit?id=" + id, function () {
+                    $.validator.unobtrusive.parse("#modal");
+                    $("#modal").modal();
+                })
+            });
+
+            $.validator.unobtrusive.addValidation = function (selector) {
+
+                debugger;
+
+                //get the relevant form 
+                var form = $(selector);
+                // delete validator in case someone called form.validate()
+                $(form).removeData("validator");
+                $.validator.unobtrusive.parse(form); 
+            }
+        })
 
 
     </script>
