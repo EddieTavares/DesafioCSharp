@@ -1,6 +1,6 @@
 ﻿namespace System.Web.Mvc.Html
 {
-  public static class BtnConfirmation
+    public static class BtnConfirmation
     {
 
         public static MvcHtmlString CustomBtnConfirmation<TModel>(this System.Web.Mvc.HtmlHelper<TModel> htmlHelper,

@@ -139,14 +139,14 @@ $(function () {
         var id = $(this).attr("data-id");
         $("#modal").load("/Tasks/Details?id=" + id, function () {
             $("#modal").modal();
-        })
+        });
     });
 
     $(".create").click(function () {
         $("#modal").load("/Tasks/Create", function () {
             $.validator.unobtrusive.parse("#modal");
             $("#modal").modal();
-        })
+        });
     });
 
     $(".edit").click(function () {
@@ -154,7 +154,7 @@ $(function () {
         $("#modal").load("/Tasks/Edit?id=" + id, function () {
             $.validator.unobtrusive.parse("#modal");
             $("#modal").modal();
-        })
+        });
     });
 })
 
