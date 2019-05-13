@@ -26,14 +26,3 @@ O usuário deve poder:
 Obs.: uma task deve conter ao menos: título e status, podendo conter adicionalmente descrição, datas de
 criação, edição, remoção e conclusão.
 
-## 2.2 SERÃO CONSIDERADOS DIFERENCIAIS
-* Versionamento com Git;
-* Camada de frontend independente do backend (API REST + frontend);
-* Utilização de frameworks ou bibliotecas de frontend (ex: jQuery, Angular, Ember, React, Bootstrap);
-* Utilização de frameworks para acesso a dados NHibernate, EntityFramework;
-* Bons padrões de desenvolvimento, nomenclaturas, arquitetura, configurações de performance e
-segurança das bibliotecas e API;
-* Documentação no código (onde aplicável) e readme.md;
-* Aplicação de conceitos fortes, design patterns e divisão da arquitetura (mesmo que desnecessários
-para o porte do projeto, e neste caso deve ser deixado um comentário no readme.md);
-* Estilização básica do frontend, responsividade e usabilidade;
